@@ -1,0 +1,44 @@
+{
+  "root": true,
+  "ignorePatterns": ["dist/**/*"],
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 8
+  },
+  "extends": [
+    "eslint:recommended"
+  ],
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "rules": {
+    "quotes": ["warn", "single", {"avoidEscape": true}],
+    "curly": "warn",
+    "no-unused-expressions": [
+      "error", {
+        "allowShortCircuit": true,
+        "allowTernary": true
+      }
+    ],
+    "no-shadow": "warn",
+    "prefer-const": "warn",
+    "eqeqeq": "warn",
+    "prefer-spread": "warn",
+    "prefer-object-spread": "warn",
+    "indent": ["warn", 2],
+    "newline-before-return": "warn",
+    "eol-last": "warn",
+    "semi": ["warn", "never"],
+    "no-trailing-spaces": "warn"
+  },
+  "overrides": [
+    {
+      "files": ["src/**/*.test.js", "src/**/*.test.jsx"],
+      "rules": {
+        "no-unused-expressions": "off"
+      }
+    }
+  ]
+}
