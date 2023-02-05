@@ -9,7 +9,10 @@
 
 ## MVP idea
 
-- You just pass HTML or markdown files to `seite`
+Basically, it should be possible to just run this on the README of any OSS project and it produces a pretty nice
+one pager documentation. It also should generally make it super easy to build one-pager docs, blog posts, etc.
+
+- You just pass HTML or markdown files to `seite`, and a nice, beautiful web page, ready for deploying to gh pages is produced
 - It provides nice overridable defaults (styling, features, etc)
 - It detects a ToC and places it in the correct place
 - It makes making a one-pager doc easy by automatically including sections from neighboring files based on the ToC
