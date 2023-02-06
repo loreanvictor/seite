@@ -32,3 +32,4 @@ export const success = (prefix, msg, extra) => {
 
 
 export const name = msg => chalk.hex(THEME.name)(msg)
+export const files = list => list[0] + (list.length > 1 ? ' (+' + (list.length - 1) + ' more)' : '')

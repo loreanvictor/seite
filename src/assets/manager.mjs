@@ -8,6 +8,9 @@ import collector from './collector.mjs'
 
 export class Manager {
   #paths = []
+  #flushed = []
+  #addlisteners = []
+  #removelisteners = []
 
   copy(from, to) {
     if (!this.#paths.some(entry => entry.from === from && entry.to === to)) {
@@ -16,15 +19,61 @@ export class Manager {
   }
 
   collect(target, dest) {
-    const rel = path => normalize(join(relative(dirname(target), dirname(dest)), path))
+    const relf = path => normalize(join(dirname(target), path))
+    const relto = path => normalize(join(relative(dirname(target), dirname(dest)), path))
 
-    return () => collector(path => this.copy(path, rel(path)))
+    return () => collector(path => this.copy(relf(path), relto(path)))
   }
 
   async flush() {
-    await Promise.all(this.#paths.map(async ({ from, to }) => {
-      const t = await time(() => copy(from, to))
-      success('copied', from + ' -> ' + to, `(${t})`)
+    await Promise.all(
+      this.#paths
+        .filter(({from, to}) => !this.flushed(from, to))
+        .map(async ({ from, to }) => this.#copy(from, to))
+    )
+
+    this.#emitDiff()
+    this.#flushed = [...this.#paths]
+    this.#paths = []
+  }
+
+  flushed(from, to) {
+    return this.#flushed.some(entry => entry.from === from && entry.to === to)
+  }
+
+  sources() {
+    return this.#flushed.map(({ from }) => from)
+  }
+
+  on(event, listener) {
+    if (event === 'add') {
+      this.#addlisteners.push(listener)
+    } else if (event === 'remove') {
+      this.#removelisteners.push(listener)
+    }
+  }
+
+  #emitDiff() {
+    const current = this.#paths.map(({ from }) => from)
+    const flushed = this.#flushed.map(({ from }) => from)
+
+    const added = current.filter(path => !flushed.includes(path))
+    const removed = flushed.filter(path => !current.includes(path))
+
+    added.forEach(path => this.#addlisteners.forEach(listener => listener(path)))
+    removed.forEach(path => this.#removelisteners.forEach(listener => listener(path)))
+  }
+
+  async repeat(path) {
+    await Promise.all(this.#flushed.map(async ({from, to}) => {
+      if (from === path) {
+        await this.#copy(from, to)
+      }
     }))
+  }
+
+  async #copy(from, to) {
+    const t = await time(() => copy(from, to))
+    success('copied', from + ' -> ' + to, `(${t})`)
   }
 }
