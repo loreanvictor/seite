@@ -3,7 +3,7 @@
   "ignorePatterns": ["dist/**/*"],
   "parserOptions": {
     "sourceType": "module",
-    "ecmaVersion": 8
+    "ecmaVersion": 13
   },
   "extends": [
     "eslint:recommended"
@@ -22,6 +22,7 @@
         "allowTernary": true
       }
     ],
+    "no-unused-vars": "warn",
     "no-shadow": "warn",
     "prefer-const": "warn",
     "eqeqeq": "warn",

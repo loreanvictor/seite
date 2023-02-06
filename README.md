@@ -1,24 +1,37 @@
 <br><br>
 
-<img src="./logo-light.svg#gh-light-mode-only" height="48px"/>
-<img src="./logo-dark.svg#gh-dark-mode-only" height="48px"/>
+<img src="./logo-light.svg#gh-light-mode-only" height="56px"/>
+<img src="./logo-dark.svg#gh-dark-mode-only" height="56px"/>
 
-<sup>fastest way for writing stuff</sup>
+<br><br>
+
+[**Seite**](.) creates ready-to-deploy, batter-included docs and blogs from markdown and HTML files, with zero configuration.
+It can be configured using frontmatter and yaml files, however it is not built for extensibility. It rather focuses on nice conventions
+and straightforward, minimal API to make the best possible websites with least amount of effort.
 
 <br>
 
-## MVP idea
+> ⚠️ **WORK IN PROGRESS**
+>
+> This project is in early development. I'll be adding more features and documentation as I go.
 
-Basically, it should be possible to just run this on the README of any OSS project and it produces a pretty nice
-one pager documentation. It also should generally make it super easy to build one-pager docs, blog posts, etc.
+<style>
+:root {
+  --primary-color: var(--text-color);
+}
 
-- You just pass HTML or markdown files to `seite`, and a nice, beautiful web page, ready for deploying to gh pages is produced
-- It provides nice overridable defaults (styling, features, etc)
-- It detects a ToC and places it in the correct place
-- It makes making a one-pager doc easy by automatically including sections from neighboring files based on the ToC
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #080A11;
+  }
+}
+</style>
 
-## Follow up steps
+<br>
 
-- It supports SSR for Web Components
-- For multipage websites, it supports client-side routing
-- It utilizes contextual info (e.g. repo)
+## Features
+
+- It can turn the README of your project into a nice website with zero config.
+- It can create one pager docs in the easiest way possible.
+- It can handle SSR support for Web Components.
+- It can handle dark mode and light mode out of the box.
