@@ -1,21 +1,22 @@
-import { h } from 'hastscript'
+import { join, normalize, dirname } from 'path'
+import { access } from 'fs/promises'
 
-import append from './append.mjs'
+import style from './util/style.mjs'
 
 
-export default (options) => {
-  let node
+export default (target) => {
+  return async tree => {
+    const styles = []
+    try {
+      // TODO: this should be moved to environment management
+      const path = normalize(join(dirname(target), '_seite.css'))
+      await access(path)
+      styles.push('./_seite.css')
+    } catch (err) { /* ignore */ }
 
-  if (typeof options === 'string') {
-    node = h('style', options)
-  } else {
-    node = h('link', {
-      href: options.url,
-      rel: options.defer ? 'preload' : 'stylesheet',
-      as: options.defer && 'style',
-      onload: options.defer && 'this.onload=null;this.rel="stylesheet"'
-    })
+    style({ url: 'https://esm.sh/nokss/dist/nokss.css' })(tree)
+    for (const url of styles) {
+      style({ url })(tree)
+    }
   }
-
-  return append(node)
 }

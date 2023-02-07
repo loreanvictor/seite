@@ -1,0 +1,9 @@
+:root {
+  --primary-color: var(--text-color);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #080A0C;
+  }
+}

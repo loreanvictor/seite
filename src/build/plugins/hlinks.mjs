@@ -1,4 +1,4 @@
-import script from './script.mjs'
+import script from './util/script.mjs'
 
 
 export default () => script(`

@@ -17,7 +17,7 @@ export async function build(target, dest, assets) {
     await ensureFile(dest)
 
     const processed = await unified()
-      .use(preset(assets.collect(target, dest)))
+      .use(preset(target, assets.collect(target, dest)))
       .process(contents)
 
     await writeFile(dest, processed.toString(), 'utf8')

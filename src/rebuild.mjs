@@ -12,6 +12,12 @@ export const rebuild = async (target, dest) => {
 
   inform('watching', files(sources))
 
+  // TODO: also watch for changes in environmental assets and configs
+  // this requires and environment manager that tracks these, attributes
+  // them to correct targets, and emits changes to the watcher when they are added,
+  // removed, or in case of config files, changed (change in other assets are managed
+  // by the asset manager)
+
   const watcher = watch(sources).on('change', (path) => {
     inform('change', name(path))
     if (assets.sources().includes(path)) {

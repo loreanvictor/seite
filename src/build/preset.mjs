@@ -12,10 +12,11 @@ import style from './plugins/style.mjs'
 import darkimg from './plugins/darkimg.mjs'
 import hlinks from './plugins/hlinks.mjs'
 import iconbtns from './plugins/iconbtns.mjs'
+import code from './plugins/code.mjs'
 import sectionize from './plugins/sectionize.mjs'
 
 
-export default (assets) => [
+export default (target, assets) => [
   parse,
   [front, ['yaml']],
   () => (_, file) => { matter(file) },
@@ -25,7 +26,8 @@ export default (assets) => [
   sectionize,
   [wrap, {wrapper: 'main'}],
   doc,
-  [style, { url: 'https://esm.sh/nokss/dist/nokss.css' }],
+  code,
+  [style, target],
   darkimg,
   hlinks,
   iconbtns,

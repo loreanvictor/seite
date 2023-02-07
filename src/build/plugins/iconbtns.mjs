@@ -1,4 +1,4 @@
-import style from './style.mjs'
+import style from './util/style.mjs'
 
 
 export default () => tree => {
