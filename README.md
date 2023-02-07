@@ -26,3 +26,15 @@ npx seite
 - It can create one pager docs in the easiest way possible.
 - It can handle SSR support for Web Components.
 - It can handle dark mode and light mode out of the box.
+
+<br>
+
+## Roadmap
+
+- [ ] Add environment manager
+- [ ] Add environmental scripts
+- [ ] Add environmental configs
+- [ ] Add yargs support
+- [ ] Add auto ToC
+- [ ] Add environmental layouts
+- [ ] Add multi-file support

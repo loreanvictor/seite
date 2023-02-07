@@ -1,5 +1,6 @@
 import parse from 'remark-parse'
 import front from 'remark-frontmatter'
+import gfm from 'remark-gfm'
 import hype from 'remark-rehype'
 import html from 'rehype-stringify'
 import slug from 'rehype-slug'
@@ -20,6 +21,7 @@ export default (target, assets) => [
   parse,
   [front, ['yaml']],
   () => (_, file) => { matter(file) },
+  gfm,
   [hype, {allowDangerousHtml: true}],
   slug,
   raw,
