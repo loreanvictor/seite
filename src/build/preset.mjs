@@ -12,6 +12,7 @@ import style from './plugins/style.mjs'
 import darkimg from './plugins/darkimg.mjs'
 import hlinks from './plugins/hlinks.mjs'
 import iconbtns from './plugins/iconbtns.mjs'
+import sectionize from './plugins/sectionize.mjs'
 
 
 export default (assets) => [
@@ -21,6 +22,7 @@ export default (assets) => [
   [hype, {allowDangerousHtml: true}],
   slug,
   raw,
+  sectionize,
   [wrap, {wrapper: 'main'}],
   doc,
   [style, { url: 'https://esm.sh/nokss/dist/nokss.css' }],

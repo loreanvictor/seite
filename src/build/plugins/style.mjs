@@ -1,5 +1,6 @@
 import { h } from 'hastscript'
-import { select } from 'hast-util-select'
+
+import append from './append.mjs'
 
 
 export default (options) => {
@@ -16,8 +17,5 @@ export default (options) => {
     })
   }
 
-  return (tree) => {
-    const head = select('head', tree)
-    head.children.push(node)
-  }
+  return append(node)
 }

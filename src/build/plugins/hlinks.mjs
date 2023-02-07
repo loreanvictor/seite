@@ -1,24 +1,24 @@
-import { selectAll } from 'hast-util-select'
-import { h } from 'hastscript'
+import script from './script.mjs'
 
 
-export default () => tree => {
-  selectAll('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]', tree).forEach(heading => {
-    heading.children.unshift(
-      h('menu', {role: 'toolbar'}, [
-        h('button', {
-          class: 'icon',
-          'aria-label': 'copy link',
-          onclick: `
-            navigator.clipboard.writeText(
-              location.protocol + '//' + location.host + location.pathname + '#' + '${heading.properties.id}'
-            ).then(() => {
-              this.textContent = '✔'
-              setTimeout(() => this.textContent = '🔗', 2000)
-            })
-          `
-        }, '🔗')
-      ])
-    )
+export default () => script(`
+  import { html, ref } from 'https://esm.sh/rehtm'
+
+  document.querySelectorAll(':is(h1, h2, h3, h4, h5, h6)[id]').forEach(heading => {
+    const id = heading.id
+    const btn = ref()
+    const copy = async () => {
+      await navigator.clipboard.writeText(location.protocol + '//' + location.host + location.pathname + '#' + id)
+      btn.current.textContent = '✔'
+      setTimeout(() => btn.current.textContent = '🔗', 2000)
+    }
+
+    heading.append(html\`
+      <menu role=toolbar>
+        <button ref=\${btn} onclick=\${copy} aria-label="copy link" class=icon>
+          🔗
+        </button>
+      </menu>
+    \`)
   })
-}
+`)

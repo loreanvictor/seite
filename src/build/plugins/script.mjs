@@ -1,12 +1,13 @@
 import { h } from 'hastscript'
-import { select } from 'hast-util-select'
+
+import append from './append.mjs'
 
 
 export default (options) => {
   let node
 
   if (typeof options === 'string') {
-    node = h('script', {type: 'module'}, options)
+    node = h('script', {type: 'module', defer: true}, options)
   } else {
     node = h('script', {
       src: options.url,
@@ -16,8 +17,5 @@ export default (options) => {
     }, options.content)
   }
 
-  return (tree) => {
-    const head = select('head', tree)
-    head.children.push(node)
-  }
+  return append(node)
 }
