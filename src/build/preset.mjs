@@ -17,7 +17,7 @@ import code from './plugins/code.mjs'
 import sectionize from './plugins/sectionize.mjs'
 
 
-export default (target, assets) => [
+export default (target, assets, env) => [
   parse,
   [front, ['yaml']],
   () => (_, file) => { matter(file) },
@@ -29,7 +29,7 @@ export default (target, assets) => [
   [wrap, {wrapper: 'main'}],
   doc,
   code,
-  [style, target],
+  [style, {target, env}],
   darkimg,
   hlinks,
   iconbtns,

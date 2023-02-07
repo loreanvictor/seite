@@ -5,8 +5,8 @@ import watch from './watcher.mjs'
 export default class WatchableManager extends Manager {
   #watcher
 
-  constructor (options) {
-    super(options)
+  constructor (...args) {
+    super(...args)
   }
 
   watch() {
@@ -17,3 +17,6 @@ export default class WatchableManager extends Manager {
     this.#watcher?.close()
   }
 }
+
+
+
