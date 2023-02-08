@@ -1,7 +1,7 @@
 <br><br>
 
-<img src="./logo-light.svg#gh-light-mode-only" height="56px"/>
-<img src="./logo-dark.svg#gh-dark-mode-only" height="56px"/>
+<img src="./logo-light.svg#gh-light-mode-only" height="44px"/>
+<img src="./logo-dark.svg#gh-dark-mode-only" height="44px"/>
 
 <br>
 
@@ -31,10 +31,12 @@ npx seite
 
 ## Roadmap
 
-- [ ] Add environment manager
+- [x] ~~Add environment manager~~
+- [ ] Add chain asset management
+- [ ] Add html/md assets
 - [ ] Add environmental scripts
+- [ ] Add environmental layouts
 - [ ] Add environmental configs
 - [ ] Add yargs support
 - [ ] Add auto ToC
-- [ ] Add environmental layouts
-- [ ] Add multi-file support
+- [ ] Add Web Components support w/ SSR
