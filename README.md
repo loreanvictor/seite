@@ -1,4 +1,9 @@
-<br><br>
+<div align="right">
+
+[![version](https://img.shields.io/npm/v/seite?label=&color=black&style=flat-square)](https://www.npmjs.com/package/seite)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/loreanvictor/seite/coverage.yml?label=%20&style=flat-square)](https://github.com/loreanvictor/seite/actions/workflows/coverage.yml)
+
+</div>
 
 <img src="./logo-light.svg#gh-light-mode-only" height="44px"/>
 <img src="./logo-dark.svg#gh-dark-mode-only" height="44px"/>
