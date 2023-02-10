@@ -1,3 +1,5 @@
+<br>
+
 <img src="./logo-light.svg#gh-light-mode-only" height="44px"/>
 <img src="./logo-dark.svg#gh-dark-mode-only" height="44px"/>
 
@@ -16,12 +18,6 @@ npx seite
 [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/loreanvictor/seite/coverage.yml?label=%20&style=flat-square)](https://github.com/loreanvictor/seite/actions/workflows/coverage.yml)
 
 </div>
-
-<br>
-<!-- 
-> ⚠️ **WORK IN PROGRESS**
->
-> This project is in early development. I'll be adding more features and documentation as I go. -->
 
 <br>
 
