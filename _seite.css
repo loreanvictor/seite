@@ -1,9 +1,22 @@
 :root {
   --primary-color: var(--text-color);
+  --section-spacing: 30vh;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background-color: #F5F5F5;
+    --text-color: #000;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background-color: #080A0C;
+    --text-color: #fff;
   }
+}
+
+section:first-child {
+  padding-top: 30vh;
 }

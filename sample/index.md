@@ -1,5 +1,3 @@
-<br><br>
-
 <img src="../logo-light.svg#gh-light-mode-only" height="44px"/>
 <img src="../logo-dark.svg#gh-dark-mode-only" height="44px"/>
 
