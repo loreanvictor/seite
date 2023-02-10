@@ -4,7 +4,7 @@
   "description": "fastest way for writing stuff",
   "bin": "src/index.mjs",
   "scripts": {
-    "sample": "node src/index.mjs -s sample/index.md dist/stuff/index.html",
+    "sample": "node src/index.mjs -s \"**\" dist/",
     "test": "jest",
     "lint": "eslint .",
     "typecheck": "tsc -p conf/typescript/es.json --noEmit",
@@ -45,6 +45,7 @@
     "chalk": "^5.2.0",
     "chokidar": "^3.5.3",
     "fs-extra": "^11.1.0",
+    "glob": "^8.1.0",
     "hast-util-select": "^5.0.5",
     "hastscript": "^7.2.0",
     "pretty-ms": "^8.0.0",

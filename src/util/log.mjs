@@ -25,7 +25,7 @@ const punc = msg => msg
 
 export const inform = (prefix, msg, extra) => {
   console.log(
-    `${chalk.hex(THEME.info)(punc(' • ') + punc(pad(prefix)))} ${punc(msg)} `
+    `${chalk.hex(THEME.info)(punc(' • ') + punc(msg ? pad(prefix) : prefix))} ${msg ? punc(msg) : ''} `
     + (extra ? chalk.hex(THEME.extra)(extra) : '')
   )
 }
@@ -33,14 +33,14 @@ export const inform = (prefix, msg, extra) => {
 
 export const highlight = (prefix, msg, extra) => {
   console.log(
-    `${chalk.hex(THEME.highlight)(' ⚡' + pad(prefix))} ${punc(msg)} `
+    `${chalk.hex(THEME.highlight)(' ⚡' + (msg ? pad(prefix) : prefix))} ${msg ? punc(msg) : ''} `
     + (extra ? chalk.hex(THEME.extra)(extra) : '')
   )
 }
 
 export const success = (prefix, msg, extra) => {
   console.log(
-    `${chalk.bold.hex(THEME.success)(' ✓ ' + pad(prefix))} ${punc(msg)} `
+    `${chalk.bold.hex(THEME.success)(' ✓ ' + (msg ? pad(prefix) : prefix))} ${msg ? punc(msg) : ''} `
     + (extra ? chalk.hex(THEME.extra)(extra) : '')
   )
 }
@@ -48,7 +48,7 @@ export const success = (prefix, msg, extra) => {
 
 export const error = (prefix, msg, err) => {
   console.log(
-    chalk.bold.hex(THEME.error)(` ✕ ${pad(prefix)} ${punc(msg)}`)
+    chalk.bold.hex(THEME.error)(` ✕ ${msg ? pad(prefix) : prefix} ${msg ? punc(msg) : ''}`)
     + (err ? chalk.hex(THEME.error)('\n | '.padEnd(PAD_LENGTH + 5) + (err.message ?? err)) : '')
   )
 }

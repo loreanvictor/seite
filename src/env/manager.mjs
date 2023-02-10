@@ -11,12 +11,18 @@ export class Manager {
   #root
   #graph = {}
   #listeners = []
+  #exclude = []
 
-  constructor(root = process.cwd()) {
+  constructor(inputs, root = process.cwd()) {
     this.#root = root
+    this.#exclude = inputs.exclude()
   }
 
-  get root() {
+  exclude() {
+    return this.#exclude
+  }
+
+  root() {
     return this.#root
   }
 
@@ -50,21 +56,30 @@ export class Manager {
       this.#graph[dir] = []
     }
 
-    if (!this.#graph[dir].includes(rel)) {
-      this.#graph[dir].push(rel)
-      this.notify(rel)
-    }
+    let notif = false
+    Object.keys(this.#graph).forEach(_dir => {
+      if (this.#affects(_dir, dir)) {
+        this.#graph[_dir].push(rel)
+        notif = true
+      }
+    })
+
+    notif && this.notify(rel)
   }
 
   remove(dep) {
     const dir = this.#dir(dep)
     const rel = this.#rel(dep)
-    if (!this.#graph[dir]) {
-      return
-    }
 
-    this.#graph[dir] = this.#graph[dir].filter(d => d !== rel)
-    this.notify(rel)
+    let notif = false
+    Object.keys(this.#graph).forEach(_dir => {
+      if (this.#affects(_dir, dir)) {
+        this.#graph[_dir] = this.#graph[_dir].filter(d => d !== rel)
+        notif = true
+      }
+    })
+
+    notif && this.notify(rel)
   }
 
   on(event, listener) {
@@ -77,7 +92,7 @@ export class Manager {
     const dir = this.#dir(dep)
     this.#listeners.forEach(listener => listener({
       path: dep,
-      affects: path => this.#dir(path) === dir,
+      affects: path => this.#affects(this.#dir(path), dir),
     }))
   }
 
@@ -94,5 +109,9 @@ export class Manager {
 
   #rel(path) {
     return relative(this.#root, path)
+  }
+
+  #affects(dir, depDir) {
+    return depDir === dir || relative(dir, depDir).split(sep).every(step => step === '..')
   }
 }

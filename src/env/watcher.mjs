@@ -4,9 +4,12 @@ import { join } from 'path'
 
 export default env => {
   const watcher = watch([
-    join(env.root, '**', '_seite.css'),
-    join(env.root, '**', '_seite.js'),
-  ])
+    join(env.root(), '**', '_seite.css'),
+    join(env.root(), '**', '_seite.js'),
+  ], {
+    ignoreInitial: true,
+    ignore: env.exclude(),
+  })
 
   watcher.on('add', path => {
     env.add(path)

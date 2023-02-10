@@ -5,11 +5,13 @@ import { highlight, name } from './util/log.mjs'
 
 
 export const serve = async (target, dest) => {
+  await rebuild(target, dest)
+
   const server = await createServer({
-    root: process.cwd(),
+    root: dest,
     logLevel: 'silent',
     server: {
-      open: dest,
+      open: true,
       host: true,
       port: 3042,
     }
@@ -18,6 +20,4 @@ export const serve = async (target, dest) => {
   Object.entries(server.resolvedUrls).forEach(([label, url]) => {
     highlight(`serving [${label}]:: `, name(url))
   })
-
-  rebuild(target, dest)
 }

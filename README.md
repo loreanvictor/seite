@@ -37,11 +37,12 @@ npx seite
 ## Roadmap
 
 - [x] ~~Add environment manager~~
-- [ ] Add input management (multiple files, dest folders, etc)
+- [x] ~~Add input management (multiple files, dest folders, etc)~~
+- [ ] Add support for html entries
 - [ ] Add chain asset management
-- [ ] Add html/md assets
+- [ ] Add layout management (layout & include directives)
 - [ ] Add environmental scripts
 - [ ] Add environmental layouts
-- [ ] Add environmental configs
+- [ ] Add environmental frontmatter
 - [ ] Add auto ToC
 - [ ] Add Web Components support w/ SSR
