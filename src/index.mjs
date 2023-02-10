@@ -1,4 +1,12 @@
+import parse from './args.mjs'
 import { serve } from './serve.mjs'
 
 
-serve('README.md', 'dist/index.html')
+const args = parse(process.argv, {
+  flags: ['serve'],
+  params: ['root'],
+})
+
+if (args.serve) {
+  serve(args._[0], args._[1])
+}

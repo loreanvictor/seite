@@ -1,7 +1,7 @@
 import { copy } from 'fs-extra'
-import { normalize, join, relative, dirname } from 'path'
+import { join, relative, dirname } from 'path'
 
-import { success } from '../util/log.mjs'
+import { success, error } from '../util/log.mjs'
 import time from '../util/time.mjs'
 import collector from './collector.mjs'
 
@@ -19,8 +19,8 @@ export class Manager {
   }
 
   collect(target, dest) {
-    const relf = path => normalize(join(dirname(target), path))
-    const relto = path => normalize(join(relative(dirname(target), dirname(dest)), path))
+    const relf = path => join(dirname(target), path)
+    const relto = path => join(dirname(target), relative(dirname(target), dirname(dest)), path)
 
     return () => collector(path => this.copy(relf(path), relto(path)))
   }
@@ -73,7 +73,11 @@ export class Manager {
   }
 
   async #copy(from, to) {
-    const t = await time(() => copy(from, to))
-    success('copied', from + ' -> ' + to, `(${t})`)
+    try {
+      const t = await time(() => copy(from, to))
+      success('copied', from + ' -> ' + to, `(${t})`)
+    } catch (err) {
+      error('copy failed', from + ' -> ' + to, err)
+    }
   }
 }

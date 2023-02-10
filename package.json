@@ -4,7 +4,7 @@
   "description": "fastest way for writing stuff",
   "bin": "src/index.mjs",
   "scripts": {
-    "sample": "node src/index.mjs",
+    "sample": "node src/index.mjs -s sample/index.md dist/stuff/index.html",
     "test": "jest",
     "lint": "eslint .",
     "typecheck": "tsc -p conf/typescript/es.json --noEmit",

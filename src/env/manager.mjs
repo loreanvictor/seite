@@ -23,7 +23,7 @@ export class Manager {
   async scan(target) {
     const bag = []
     const dir = this.#dir(target)
-    const steps = dir.split(sep)
+    const steps = ('./' + dir).split(sep)
     let path = '.'
     for (const step of steps) {
       path = join(path, step)
@@ -37,10 +37,10 @@ export class Manager {
   async get(target) {
     const dir = this.#dir(target)
     if (!this.#graph[dir]) {
-      await this.scan(dir)
+      await this.scan(target)
     }
 
-    return this.#graph[dir]
+    return this.#graph[dir].map(d => relative(dir, d))
   }
 
   add(dep) {

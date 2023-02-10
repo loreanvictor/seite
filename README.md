@@ -37,11 +37,11 @@ npx seite
 ## Roadmap
 
 - [x] ~~Add environment manager~~
+- [ ] Add input management (multiple files, dest folders, etc)
 - [ ] Add chain asset management
 - [ ] Add html/md assets
 - [ ] Add environmental scripts
 - [ ] Add environmental layouts
 - [ ] Add environmental configs
-- [ ] Add yargs support
 - [ ] Add auto ToC
 - [ ] Add Web Components support w/ SSR
