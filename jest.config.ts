@@ -1,15 +1,16 @@
 export default {
   verbose: true,
   clearMocks: true,
+  transform: {},
   testEnvironment: 'node',
   testEnvironmentOptions: {
     url: 'http://localhost',
   },
-  testMatch: ['**/test/**/*.test.[jt]s?(x)'],
+  testMatch: ['**/test/**/*.test.m[jt]s?(x)'],
   collectCoverageFrom: [
-    'src/**/*.{js,jsx}',
-    '!src/**/*.test.{js,jsx}',
-    '!src/**/test/.*/*.{js, jsx}'
+    'src/**/*.{mjs,jsx}',
+    '!src/**/*.test.{mjs,jsx}',
+    '!src/**/test/.*/*.{mjs, jsx}'
   ],
   coverageThreshold: {
     global: {
@@ -18,5 +19,5 @@ export default {
       lines: 100,
       statements: 100,
     },
-  }
+  },
 }

@@ -36,9 +36,12 @@
   },
   "overrides": [
     {
-      "files": ["src/**/*.test.js", "src/**/*.test.jsx"],
+      "files": ["src/**/*.test.mjs", "src/**/*.test.jsx"],
       "rules": {
         "no-unused-expressions": "off"
+      },
+      "env": {
+        "jest": true
       }
     }
   ]

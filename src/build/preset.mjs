@@ -18,7 +18,7 @@ import iconbtns from './plugins/iconbtns.mjs'
 import code from './plugins/code.mjs'
 import sectionize from './plugins/sectionize.mjs'
 import main from './plugins/main.mjs'
-import button from './plugins/buttons.mjs'
+import button from './plugins/button.mjs'
 
 
 const mdprep = () => [
