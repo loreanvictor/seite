@@ -5,7 +5,7 @@ import time from '../time.mjs'
 describe('time', () => {
   test('times given async function', async () => {
     const timeTaken = await time(async () => {
-      await sleep(100)
+      await sleep(110)
     })
 
     expect(timeTaken.endsWith('ms')).toBe(true)
