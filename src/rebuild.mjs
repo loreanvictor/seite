@@ -25,9 +25,14 @@ export const rebuild = async (target, dest) => {
     build(inputs, assets, env, inputs.sources().filter(source => change.affects(source)))
   })
 
-  return () => {
-    inputs.close()
-    assets.close()
-    env.close()
+  return {
+    inputs,
+    assets,
+    env,
+    close: () => {
+      inputs.close()
+      assets.close()
+      env.close()
+    }
   }
 }

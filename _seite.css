@@ -1,6 +1,8 @@
 :root {
   --primary-color: var(--text-color);
+  --primary-text-color: var(--background-color);
   --section-spacing: 30vh;
+  --sidebar-brightness: 1;
 }
 
 @media (prefers-color-scheme: light) {

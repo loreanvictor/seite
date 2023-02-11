@@ -82,6 +82,10 @@ export class Manager {
     }
   }
 
+  destDir() {
+    return this.#destDir
+  }
+
   add(source) {
     this.#sources.push(source)
     this.#addListeners.forEach(listener => listener(source))

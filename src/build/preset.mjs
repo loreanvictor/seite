@@ -1,11 +1,13 @@
-import parse from 'remark-parse'
+import { extname } from 'path'
+
+import markdown from 'remark-parse'
+import html from 'rehype-parse'
 import front from 'remark-frontmatter'
 import gfm from 'remark-gfm'
 import hype from 'remark-rehype'
-import html from 'rehype-stringify'
+import serialize from 'rehype-stringify'
 import slug from 'rehype-slug'
 import raw from 'rehype-raw'
-import wrap from 'rehype-wrap'
 import doc from 'rehype-document'
 import { matter } from 'vfile-matter'
 
@@ -15,18 +17,43 @@ import hlinks from './plugins/hlinks.mjs'
 import iconbtns from './plugins/iconbtns.mjs'
 import code from './plugins/code.mjs'
 import sectionize from './plugins/sectionize.mjs'
+import main from './plugins/main.mjs'
+import button from './plugins/buttons.mjs'
+
+
+const mdprep = () => [
+  markdown,
+  [front, ['yaml']],
+  () => (_, file) => { matter(file) },
+  button,
+  gfm,
+  [hype, {allowDangerousHtml: true}],
+]
+
+
+const htmlprep = () => [
+  html,
+]
+
+
+export const parse = (target) => {
+  switch (extname(target)) {
+  case '.md':
+    return mdprep()
+  case '.html':
+    return htmlprep()
+  default:
+    throw new Error(`Unknown file extension: ${extname(target)}`)
+  }
+}
 
 
 export default (target, assets, env) => [
-  parse,
-  [front, ['yaml']],
-  () => (_, file) => { matter(file) },
-  gfm,
-  [hype, {allowDangerousHtml: true}],
+  ...parse(target),
   slug,
   raw,
   sectionize,
-  [wrap, {wrapper: 'main'}],
+  main,
   doc,
   code,
   [style, {target, env}],
@@ -34,5 +61,5 @@ export default (target, assets, env) => [
   hlinks,
   iconbtns,
   assets,
-  html
+  serialize
 ]

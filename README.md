@@ -19,7 +19,9 @@ npx seite
 
 </div>
 
+
 <br>
+
 
 ## Work in Progress
 
@@ -117,11 +119,11 @@ In this bit I'll outline what [**Seite**](.) is supposed to become / achieve:
 
 - [x] ~~Add environment manager~~
 - [x] ~~Add input management (multiple files, dest folders, etc)~~
-- [ ] Add support for html entries
+- [x] ~~Add support for html entries~~
 - [ ] Add chain asset management
 - [ ] Add layout management (layout & include directives)
 - [ ] Add environmental scripts
 - [ ] Add environmental layouts
-- [ ] Add environmental frontmatter
+- [ ] Add environmental frontmatter and config management
 - [ ] Add auto ToC
 - [ ] Add Web Components support w/ SSR
