@@ -122,11 +122,9 @@ In this bit I'll outline what [**Seite**](.) is supposed to become / achieve:
 - [x] ~~Add support for html entries~~
 - [ ] Add chain asset management
   - [ ] Spin off style management and script management from asset management.
-  - [ ] Handle bundling for scripts
-  - [ ] Handle bundling for styles
-- [ ] Add layout management (layout & include directives)
-- [ ] Add environmental scripts
-- [ ] Add environmental layouts
+  - [ ] Handle bundling for scripts (incl. env)
+  - [ ] Handle bundling for styles (incl. env)
+- [ ] Add layout management (layout & include directives, incl. env)
 - [ ] Add environmental frontmatter and config management
 - [ ] Add auto ToC
 - [ ] Add Web Components support w/ SSR
