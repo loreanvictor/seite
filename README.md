@@ -121,6 +121,9 @@ In this bit I'll outline what [**Seite**](.) is supposed to become / achieve:
 - [x] ~~Add input management (multiple files, dest folders, etc)~~
 - [x] ~~Add support for html entries~~
 - [ ] Add chain asset management
+  - [ ] Spin off style management and script management from asset management.
+  - [ ] Handle bundling for scripts
+  - [ ] Handle bundling for styles
 - [ ] Add layout management (layout & include directives)
 - [ ] Add environmental scripts
 - [ ] Add environmental layouts
