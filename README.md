@@ -123,7 +123,9 @@ In this bit I'll outline what [**Seite**](.) is supposed to become / achieve:
 - [ ] Add chain asset management
   - [ ] Spin off style management and script management from asset management.
   - [ ] Handle bundling for scripts (incl. env)
+        _This can be done by bundling environmental scripts. Inline scripts can also be bundled, though this would require further care when handling layouts (relative imports in inline scripts within layouts should get path corrections)._
   - [ ] Handle bundling for styles (incl. env)
+          _This can be done by bundling environmental styles. Inline styles can also be bundled, though this would require further care when handling layouts (relative imports in inline styles within layouts should get path corrections)._
 - [ ] Add layout management (layout & include directives, incl. env)
 - [ ] Add environmental frontmatter and config management
 - [ ] Add auto ToC
